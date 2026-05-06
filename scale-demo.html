@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strengths Comparison</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #222;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    /* SCALE STRUCTURE */
+    .scale-area {
+      position: relative;
+      height: 620px;
+      margin-bottom: 20px;
+    }
+
+    .beam {
+      position: absolute;
+      top: 200px;
+      left: 50%;
+      width: 650px;
+      height: 14px;
+      background: #222;
+      transform: translateX(-50%) rotate(0deg);
+      transform-origin: center;
+      border-radius: 8px;
+      transition: transform 1.2s ease;
+    }
+
+    .scale-area.tilt .beam {
+      transform: translateX(-50%) rotate(-9deg);
+    }
+
+    .center-post {
+      position: absolute;
+      top: 200px;
+      left: 50%;
+      width: 16px;
+      height: 220px;
+      background: #222;
+      transform: translateX(-50%);
+      border-radius: 8px;
+    }
+
+    .base {
+      position: absolute;
+      top: 420px;
+      left: 50%;
+      width: 220px;
+      height: 24px;
+      background: #222;
+      transform: translateX(-50%);
+      border-radius: 50px;
+    }
+
+    /* PANS */
+    .pan {
+      position: absolute;
+      width: 240px;
+      transition: transform 1.2s ease;
+      z-index: 2;
+    }
+
+    .left-pan {
+      top: 120px;
+      left: calc(50% - 390px);
+    }
+
+    .right-pan {
+      top: 120px;
+      right: calc(50% - 390px);
+    }
+
+    /* 🔗 CHAINS */
+    .pan::before {
+      content: "";
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      width: 3px;
+      height: 70px;
+      background: #222;
+      transform: translateX(-50%);
+    }
+
+    .pan::after {
+      content: "";
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      width: 120px;
+      height: 120px;
+      border-left: 3px solid #222;
+      border-right: 3px solid #222;
+      border-top: 3px solid #222;
+      transform: translateX(-50%) rotate(45deg);
+      z-index: -1;
+    }
+
+    /* CARD */
+    .card {
+      background: white;
+      border: 3px solid #222;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    /* Fake pan under card */
+    .card::after {
+      content: "";
+      display: block;
+      height: 14px;
+      background: #222;
+      border-radius: 0 0 50px 50px;
+      margin: 18px -20px -24px;
+    }
+
+    /* TILT */
+    .scale-area.tilt .left-pan {
+      transform: translateY(45px);
+    }
+
+    .scale-area.tilt .right-pan {
+      transform: translateY(-35px);
+    }
+
+    /* TEXT */
+    .card h2 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .card ul {
+      text-align: left;
+      padding-left: 20px;
+      line-height: 1.45;
+    }
+
+    .weight {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #eee;
+      font-weight: bold;
+    }
+
+    /* BUTTON */
+    button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      background: #000;
+    }
+
+    .talk-track {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+      min-height: 50px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+      .beam {
+        width: 300px;
+      }
+
+      .left-pan {
+        left: 10%;
+        top: 260px;
+      }
+
+      .right-pan {
+        right: 10%;
+        top: 380px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Strengths Comparison</h1>
+    <p class="subtitle">A visual way to show expanded impact beyond the baseline role.</p>
+
+    <div class="scale-area" id="scaleArea">
+      <div class="beam"></div>
+      <div class="center-post"></div>
+      <div class="base"></div>
+
+      <div class="pan left-pan">
+        <div class="card">
+          <h2>My Contribution</h2>
+          <ul>
+            <li>Deep product expertise across workflows & edge cases</li>
+            <li>Improves team processes, not just individual tickets</li>
+            <li>Creates documentation used by the entire team</li>
+            <li>Trains and supports teammates proactively</li>
+            <li>Uses data to identify patterns and reduce repeat issues</li>
+            <li>Consistent performance during tenure</li>     
+          </ul>
+          <span class="weight">Expanded impact</span>
+        </div>
+      </div>
+
+      <div class="pan right-pan">
+        <div class="card">
+          <h2>Baseline Profile</h2>
+          <ul>
+            <li>Resolves tickets accurately and efficiently</li>
+            <li>Provides good customer support experience</li>
+            <li>Contributes through individual tasks and solutions</li> 
+
+          </ul>
+          <span class="weight">Core expectations</span>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="toggleScale()">Show the Difference</button>
+
+    <p class="talk-track" id="talkTrack">
+      At the baseline, both profiles can support customers effectively.
+    </p>
+  </div>
+
+  <script>
+    function toggleScale() {
+      const scale = document.getElementById("scaleArea");
+      const text = document.getElementById("talkTrack");
+
+      scale.classList.toggle("tilt");
+
+      if (scale.classList.contains("tilt")) {
+        text.textContent =
+          "But when you factor in broader impact, ownership, training, and data thinking, the value clearly shifts.";
+      } else {
+        text.textContent =
+          "At the baseline, both profiles can support customers effectively...";
+      }
+    }
+  </script>
+</body>
+</html>
